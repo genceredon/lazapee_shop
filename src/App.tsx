@@ -6,7 +6,7 @@ import Header from "./components/Header";
 import ProductList from "./components/ProductList";
 import About from "./components/About";
 import Home from "./components/Home";
-import { NavLink, Route, Switch } from "react-router-dom";
+import { NavLink, Redirect, Route, Switch } from "react-router-dom";
 import PageNotFound from "./components/PageNotFound";
 import ManageProduct from "./components/ManageProduct";
 
@@ -41,7 +41,8 @@ function App() {
           <Route path="/products" component={ProductList}></Route>
           <Route path="/about" component={About}></Route>
           <Route path="/manageProduct/:productId" component={ManageProduct} />
-          <Route exact path="*" component={PageNotFound}></Route>
+          <Route exact path="/404PageNotFound" component={PageNotFound}></Route>
+          <Redirect from='*' to='/404PageNotFound' />
         </Switch>
       </section>
     </div>

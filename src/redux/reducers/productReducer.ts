@@ -16,7 +16,10 @@ const productReducer: Reducer<StoreState, CustomAction> = (
           { ...p, stockCount: p.stockCount - (p.soldCount + 1) } :
           p
         )
-      }
+      };
+    case types.PRODUCT_UPDATE_SUCCESS:
+      console.log(action.payload.productList)
+      return { ...state, productList: action.payload.productList }
     default:
       return state;
   }
