@@ -1,0 +1,22 @@
+.header {
+  width: 100%;
+  display: flex;
+  background-color: #fe5722;
+  align-items: center;
+}
+
+.navbar {
+  font-size: 20px;
+}
+
+.navbar a {
+  margin: 10px;
+  color: white;
+  text-decoration-line: none;
+}
+
+.app-logo {
+  height: 60px;
+  width: 60px;
+  margin: 5px;
+}

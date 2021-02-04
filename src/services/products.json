@@ -1,0 +1,22 @@
+{
+  "data": [
+    {
+      "title": "Authentic Incredible Fella",
+      "price": 150,
+      "rating": 5,
+      "stockCount": 10
+    },
+    {
+      "title": "Authentic Tarantula Boy",
+      "price": 250,
+      "rating": 5,
+      "stockCount": 25
+    },
+    {
+      "title": "Authentic Captain Barbell",
+      "price": 350,
+      "rating": 3,
+      "stockCount": 100
+    }
+  ]
+}
