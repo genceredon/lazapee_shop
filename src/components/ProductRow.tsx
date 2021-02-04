@@ -1,32 +1,37 @@
 import React from "react";
 import { TableRow, TableCell, Button } from "@material-ui/core";
 import { Product } from "../models/Product";
-import { Link, Route, useRouteMatch } from "react-router-dom";
-import ManageProduct from "./ManageProduct";
+import { Link } from "react-router-dom";
 
 type Props = {
   product: Product;
+  onBuyNowClick: (_id: string) => void;
 };
 
 const ProductRow: React.FC<Props> = (props: Props) => {
   const { product: row } = props;
-  const { url, path } = useRouteMatch();
+
+  function handleBuyNow(e:any){
+    props.onBuyNowClick(row._id);
+  }
 
   return (
     <TableRow key={row._id}>
       <TableCell component="th" scope="row">
         <Link to={`/manageProduct/${row._id}`}>{row.title}</Link>
-        <Route path={`${path}/manageProduct/:productId`} component={ManageProduct}></Route>
       </TableCell>
       <TableCell align="right">{row.price}</TableCell>
       <TableCell align="right">{row.rating}</TableCell>
       <TableCell align="right">{row.stockCount - row.soldCount}</TableCell>
       <TableCell align="right">
-        <Button variant="contained" color="primary">
+        <Button variant="contained" color="primary" onClick={handleBuyNow}
+>
           Buy Now
         </Button>
       </TableCell>
     </TableRow>
+
+
   );
 };
 

@@ -14,14 +14,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { loadProducts } from "../redux/actions/productActions";
 import { StoreState } from "../redux/StoreState";
 import ProductRow from "./ProductRow";
-import { useParams } from "react-router-dom";
+import { ProductDecrementAction } from "../redux/actions/ActionCreators";
 
-type RouteParams = {
-  productId: string;
-};
-
-const ProductList: React.FC = () => {
-    const useStyles = makeStyles({
+const ProductList = () => {
+  const useStyles = makeStyles({
     table: {
       minWidth: 650,
     },
@@ -38,11 +34,13 @@ const ProductList: React.FC = () => {
     (state) => state.productList
   ) as Product[];
 
-  const params = useParams<RouteParams>();
-
   useEffect(() => {
     loadProducts(dispatch);
-  }, [dispatch, params.productId]);
+  }, []);
+
+  function hanldeStockDecrement(id: any) {
+    dispatch(ProductDecrementAction(id, data));
+  }
 
   return (
     <>
@@ -65,7 +63,9 @@ const ProductList: React.FC = () => {
           </TableHead>
           <TableBody>
             {data.map((row) => (
-              <ProductRow product={row} />
+              <ProductRow product={row} 
+              onBuyNowClick={hanldeStockDecrement}
+              />
             ))}
           </TableBody>
         </Table>

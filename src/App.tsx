@@ -8,6 +8,7 @@ import About from "./components/About";
 import Home from "./components/Home";
 import { NavLink, Route, Switch } from "react-router-dom";
 import PageNotFound from "./components/PageNotFound";
+import ManageProduct from "./components/ManageProduct";
 
 function App() {
   return (
@@ -39,7 +40,7 @@ function App() {
           </Route>
           <Route path="/products" component={ProductList}></Route>
           <Route path="/about" component={About}></Route>
-          {/* <Redirect from="/about-page" to="/about"></Redirect> */}
+          <Route path="/manageProduct/:productId" component={ManageProduct} />
           <Route exact path="*" component={PageNotFound}></Route>
         </Switch>
       </section>

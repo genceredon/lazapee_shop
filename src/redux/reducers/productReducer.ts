@@ -10,6 +10,13 @@ const productReducer: Reducer<StoreState, CustomAction> = (
   switch (action.type) {
     case types.PRODUCT_LOAD_SUCCESS:
       return { ...state, productList: action.payload.productList };
+    case types.PRODUCT_DECREMENT_SUCCESS:
+      return {
+        ...state, productList: state.productList.map(p => p._id === action.id ?
+          { ...p, stockCount: p.stockCount - (p.soldCount + 1) } :
+          p
+        )
+      }
     default:
       return state;
   }
